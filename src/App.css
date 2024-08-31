@@ -1,0 +1,7 @@
+.nav--pages {
+  overflow-y: auto;
+}
+
+.nav--pages.open {
+  backdrop-filter: blur(5px);
+}
