@@ -1,3 +1,3 @@
-export { default as Home } from './Home'
-export { default as Cart } from "./Cart";
-export { default as Login } from "./Login";
+export { default as Home } from "./Home";
+export { default as CartPage } from "./CartPage";
+export { default as LoginPage } from "./LoginPage";

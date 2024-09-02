@@ -20,6 +20,7 @@ const Hero = () => {
             alt="hero-img"
             />
         </div> */}
+      
       <Button
         bgColor="bg-white"
         hoverBgColor={"hover:bg-black"}

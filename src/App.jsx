@@ -1,17 +1,17 @@
 import "./App.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Home, Cart, Login } from "./pages";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { Home, CartPage, LoginPage } from "./pages";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/CartPage" element={<CartPage />} />
+          <Route path="/LoginPage" element={<LoginPage />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

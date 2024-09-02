@@ -3,7 +3,7 @@ import { Button } from "./common";
 
 const Footer = () => {
   return (
-    <footer className="footer bg-black pt-8">
+    <footer className="footer bg-black pt-8" id="footer">
       <div className="container mx-auto p-2">
         <div className="flex flex-wrap justify-between mb-8">
           <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
