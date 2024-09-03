@@ -1,5 +1,5 @@
 import { Card } from "./common";
-import { HeroImg } from "../assets/images";
+import { Img1, Img2, Img3 } from "../assets/images";
 
 const Collection = () => {
   const handleAddToCart = () => {
@@ -22,7 +22,7 @@ const Collection = () => {
 
       <div className="pt-[28px] pb-[90px] w-[80%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8 justify-items-center items-center mx-auto">
         <Card
-          image={HeroImg}
+          image={Img1}
           title="Product Name"
           discount={"2%"}
           onAddToCart={handleAddToCart}
@@ -31,7 +31,7 @@ const Collection = () => {
         />
 
         <Card
-          image={HeroImg}
+          image={Img3}
           title="Product Name"
           discount={"20%"}
           onAddToCart={handleAddToCart}
@@ -40,7 +40,7 @@ const Collection = () => {
         />
 
         <Card
-          image={HeroImg}
+          image={Img2}
           title="Product Name"
           discount={"20%"}
           onAddToCart={handleAddToCart}
@@ -49,7 +49,7 @@ const Collection = () => {
         />
 
         <Card
-          image={HeroImg}
+          image={Img3}
           title="Product Name"
           discount={"New"}
           onAddToCart={handleAddToCart}
@@ -58,7 +58,7 @@ const Collection = () => {
         />
 
         <Card
-          image={HeroImg}
+          image={Img1}
           title="Product Name"
           discount={"15%"}
           onAddToCart={handleAddToCart}
@@ -67,7 +67,7 @@ const Collection = () => {
         />
 
         <Card
-          image={HeroImg}
+          image={Img2}
           title="Product Name"
           discount={"New"}
           onAddToCart={handleAddToCart}

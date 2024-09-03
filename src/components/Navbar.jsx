@@ -9,6 +9,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [navbarTransparent, setNavbarTransparent] = useState(true);
 
+  const navLinks = [
+    { name: "Home", href: "#", id: "home" },
+    { name: "About", href: "#about", id: "about" },
+    { name: "Cart", href: "./CartPage", id: "cart" },
+    { name: "Contact", href: "#footer", id: "contact" },
+  ];
+
   const handleClick = (link) => {
     setActiveLink(link);
     setIsOpen(false); // Close the menu after clicking a link
@@ -41,7 +48,7 @@ const Navbar = () => {
       } text-white transition-all duration-300 ease-in-out`}
     >
       <div className="header--logo w-10">
-        <img src={MainLogo} alt="main-logo" />
+        <img src={MainLogo} alt="Main Logo of Your Brand" />
       </div>
 
       {/* Icons Section */}
@@ -67,6 +74,7 @@ const Navbar = () => {
       <div
         className="md:hidden flex items-center text-2xl cursor-pointer order-2 md:order-1"
         onClick={toggleMenu}
+        aria-expanded={isOpen}
       >
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
@@ -79,61 +87,22 @@ const Navbar = () => {
           isOpen ? "block" : "hidden md:flex"
         }`}
       >
-        <div
-          className={`nav--home hover:scale-110 hover:text-white ${
-            activeLink === "home" ? "text-white" : "text-[#555252]"
-          }`}
-          onClick={() => handleClick("home")}
-        >
-          <a
-            href="#"
-            className="text-white hover:text-gray-200 block w-full py-2 px-4"
+        {navLinks.map((link) => (
+          <div
+            key={link.id}
+            className={`nav--${link.id} hover:scale-110 hover:text-white ${
+              activeLink === link.id ? "text-white border-b-2" : "text-[#555252] border-none"
+            } transition-all duration-300 ease-in-out`}
+            onClick={() => handleClick(link.id)}
           >
-            Home
-          </a>
-        </div>
-
-        <div
-          className={`nav--about hover:scale-110 hover:text-white ${
-            activeLink === "about" ? "text-white" : "text-[#555252]"
-          }`}
-          onClick={() => handleClick("about")}
-        >
-          <a
-            href="#about"
-            className="text-white hover:text-gray-200 block w-full py-2 px-4"
-          >
-            About
-          </a>
-        </div>
-
-        <div
-          className={`nav--cart hover:scale-110 hover:text-white ${
-            activeLink === "nav--cart" ? "text-white" : "text-[#555252]"
-          }`}
-          onClick={() => handleClick("cart")}
-        >
-          <a
-            href="./CartPage"
-            className="text-white hover:text-gray-200 block w-full py-2 px-4"
-          >
-            Cart
-          </a>
-        </div>
-
-        <div
-          className={`nav--contact hover:scale-110 hover:text-white ${
-            activeLink === "contact" ? "text-white" : "text-[#555252]"
-          }`}
-          onClick={() => handleClick("contact")}
-        >
-          <a
-            href="#footer"
-            className="text-white hover:text-gray-200 block w-full py-2 px-4"
-          >
-            Contact
-          </a>
-        </div>
+            <a
+              href={link.href}
+              className="text-white hover:text-gray-200 block w-full py-2 px-4"
+            >
+              {link.name}
+            </a>
+          </div>
+        ))}
       </div>
     </nav>
   );

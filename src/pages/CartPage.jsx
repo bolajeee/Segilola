@@ -1,4 +1,5 @@
-import { CartItem, Navbar } from "../components"
+import { Img1, Img2, Img3 } from "../assets/images";
+import { CartItem, Footer, Navbar } from "../components";
 import { Button } from "../components/common";
 
 const CartPage = () => {
@@ -27,12 +28,12 @@ const CartPage = () => {
         Cart
       </h1>
 
-      <CartItem />
-      <CartItem />
-      <CartItem />
-      <CartItem />
+      <CartItem image={Img1} />
+      <CartItem image={Img3} />
+      <CartItem image={Img2} />
+      <CartItem image={Img1} />
 
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-12 pb-[90px]">
         <Button
           bgColor="bg-white"
           hoverBgColor="hover:bg-black"
@@ -45,8 +46,9 @@ const CartPage = () => {
           Checkout
         </Button>
       </div>
+      <Footer />
     </>
   );
-}
+};
 
-export default CartPage
+export default CartPage;

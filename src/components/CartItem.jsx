@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./common";
 
-const CartItem = () => {
+const CartItem = (image) => {
   const [number, setNumber] = useState(0);
 
   const handleClickAdd = () => {
@@ -27,8 +27,8 @@ const CartItem = () => {
           <div className="flex flex-col md:flex-row items-center justify-between p-8 space-y-4 md:space-y-0 md:space-x-4">
             <div className="flex items-center">
               <img
-                src="https://via.placeholder.com/50"
-                alt="Product 1"
+                src={image}
+                alt="Product"
                 className="w-16 h-16 object-cover rounded-lg transition-transform duration-200 transform hover:scale-110"
               />
               <span className="ml-4 text-lg font-medium">Product 1</span>

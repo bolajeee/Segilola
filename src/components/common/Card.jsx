@@ -11,7 +11,7 @@ const Card = ({ image, title, discount, onAddToCart, onLike, onReadMore }) => {
   };
 
   return (
-    <div className="card group relative bg-[#555252] shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="card group relative bg-[#555252] shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-[250px] md:w-[280px]">
       {discount && (
         <div className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-2 py-1 z-10">
           {discount}

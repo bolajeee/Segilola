@@ -1,4 +1,4 @@
-// import { HeroImg } from "../assets/images";
+import { HeroImg } from "../assets/images";
 
 import { Button } from "./common";
 
@@ -13,13 +13,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* <div className="hero--img w-full h-full absolute inset-0 z-0">
+      <div className="hero--img w-full h-full absolute inset-0 z-0">
             <img
             className="object-cover w-full h-full"
             src={HeroImg}
             alt="hero-img"
             />
-        </div> */}
+        </div>
       
       <Button
         bgColor="bg-white"

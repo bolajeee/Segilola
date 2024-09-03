@@ -3,7 +3,7 @@ import { Button } from "./common";
 const Subscribe = () => {
   return (
     <div
-      className="about--us flex flex-col justify-items-center items-center text-center w-[66%] mx-auto py-[90px]"
+      className="about--us flex flex-col justify-items-center items-center text-center w-[66%] mx-auto pb-[90px]"
       id="about"
     >
       <h2 className="font-[300] text-[30px] tracking-wide m-2">
