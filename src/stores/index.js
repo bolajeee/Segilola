@@ -1,9 +1,8 @@
-import { GrConfigureStore } from "@reduxjs/toolkit";
-import cartReducer  from './Cart' 
+import { ConfigureStore } from "@reduxjs/toolkit";
+import cartReducer from "./Cart";
 
-export const store = GrConfigureStore({
-    reducer: {
-        cart: cartReducer
-        
-    }
-})
+export const store = ConfigureStore({
+  reducer: {
+    cart: cartReducer,
+  },
+});
