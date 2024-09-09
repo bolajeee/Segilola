@@ -87,7 +87,7 @@ const Collection = () => {
 
                 {/* Order Button */}
                 <button className="bg-transparent hover:bg-white hover:text-black text-white py-1 px-4 rounded-full mt-4 border border-white duration-300">
-                  Order Now
+                  Add to Cart
                 </button>
               </div>
             </div>

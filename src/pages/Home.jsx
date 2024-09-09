@@ -1,10 +1,13 @@
 import React from "react";
-import { Navbar, Hero, About, Collection, Subscribe, Footer } from "../components";
+import { Navbar, Hero, About, Collection, Subscribe, Footer, Banner } from "../components";
 import AOS from 'aos'
 import "aos/dist/aos.css"
+import { useSelector } from "react-redux";
 
 
 const Home = () => {
+  const carts = useSelector(store => store.cart.items)
+  console.log(carts)
   React.useEffect(() => {
     AOS.init({
       offset: 100,
@@ -22,6 +25,7 @@ const Home = () => {
         <Hero />
         <About/>
         <Collection />
+        <Banner />
         <Subscribe />
         <Footer />
     </div>
