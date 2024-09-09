@@ -46,8 +46,9 @@ const CartPage = () => {
           Checkout
         </Button>
       </div>
+
       <Footer />
-    </>
+      </>
   );
 };
 

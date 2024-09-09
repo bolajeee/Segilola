@@ -1,81 +1,100 @@
-import { Card } from "./common";
-import { Img1, Img2, Img3 } from "../assets/images";
+import { FaStar } from "react-icons/fa";
+import { Img2, Img3 } from "../assets/images";
+
+const productData = [
+  {
+    id: 1,
+    img: Img3,
+    rating: 5.0,
+    description: "Lorem ipsum dolor sit amet haller.",
+    aosDelay: "0",
+  },
+  {
+    id: 2,
+    img: Img2,
+    rating: 5.0,
+    description: "Consectetur adipiscing elit sitt.",
+    aosDelay: "200",
+  },
+  {
+    id: 3,
+    img: Img3,
+    rating: 5.0,
+    description: "Sed do eiusmod tempor incididunt.",
+    aosDelay: "400",
+  },
+];
 
 const Collection = () => {
-  const handleAddToCart = () => {
-    console.log("Add to Cart");
-  };
-
-  const handleLike = () => {
-    console.log("Liked");
-  };
-
-  const handleReadMore = () => {
-    console.log("Read More");
-  };
-
   return (
-    <>
-      <h1 className="flex justify-center font-[300] text-[30px] tracking-wide mt-2 mb-6">
-        Collections
-      </h1>
+    <div className="mt-14 mb-12">
+      <div className="container">
+        {/* Top Section */}
+        <div
+          data-aos="fade-up"
+          
+          className="Top--Products flex flex-col justify-center items-center text-center w-[66%] mx-auto py-[40px]"
+        >
+          <p className="text-sm text-white  ">Top Selling</p>
+          <h1 className="text-3xl font-bold mt-2 mb-6">Products</h1>
+          <hr className="w-[70px] h-[3px] mx-auto py-[23px]" />
 
-      <div className="pt-[28px] pb-[90px] w-[80%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8 justify-items-center items-center mx-auto">
-        <Card
-          image={Img1}
-          title="Product Name"
-          discount={"2%"}
-          onAddToCart={handleAddToCart}
-          onLike={handleLike}
-          onReadMore={handleReadMore}
-        />
+          <p className="text-[16px] text-gray-400 w-[66%]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            quidem ullam possimus hic temporibus vel provident, ducimus corrupti
+            non tempora accusantium esse fugiat labore iure eius ex libero? At,
+            repudiandae.
+          </p>
+        </div>
 
-        <Card
-          image={Img3}
-          title="Product Name"
-          discount={"20%"}
-          onAddToCart={handleAddToCart}
-          onLike={handleLike}
-          onReadMore={handleReadMore}
-        />
+        {/* Products Section */}
+        <div
+          data-aos="zoom-in"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center"
+        >
+          {productData.map((data) => (
+            <div
+              data-aos="fade-up"
+              data-aos-delay={data.aosDelay}
+              key={data.id}
+              className="rounded-2xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group max-w-[300px] mt-24 mx-auto"
+            >
+              <div className="h-[240px] flex justify-center items-center overflow-hidden">
+                <img
+                  src={data.img}
+                  alt="img"
+                  className="max-w-[240px] max-h-[240px] transform group-hover:scale-105 duration-300 drop-shadow-md"
+                />
+              </div>
 
-        <Card
-          image={Img2}
-          title="Product Name"
-          discount={"20%"}
-          onAddToCart={handleAddToCart}
-          onLike={handleLike}
-          onReadMore={handleReadMore}
-        />
+              <div className="p-4 text-center mt-6">
+                {/* Rating */}
+                <div className="w-full flex justify-center gap-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className="text-yellow-400" />
+                  ))}
+                </div>
 
-        <Card
-          image={Img3}
-          title="Product Name"
-          discount={"New"}
-          onAddToCart={handleAddToCart}
-          onLike={handleLike}
-          onReadMore={handleReadMore}
-        />
+                {/* Title */}
+                <h1 className="text-xl font-bold mb-2">
+                  {data.title || "Product Title"}
+                </h1>
 
-        <Card
-          image={Img1}
-          title="Product Name"
-          discount={"15%"}
-          onAddToCart={handleAddToCart}
-          onLike={handleLike}
-          onReadMore={handleReadMore}
-        />
+                {/* Description */}
+                <p className="text-gray-500 group-hover:text-white max-w-[200px] duration-300 text-sm line-clamp-2">
+                  {data.description}
+                </p>
 
-        <Card
-          image={Img2}
-          title="Product Name"
-          discount={"New"}
-          onAddToCart={handleAddToCart}
-          onLike={handleLike}
-          onReadMore={handleReadMore}
-        />
+                {/* Order Button */}
+                <button className="bg-transparent hover:bg-white hover:text-black text-white py-1 px-4 rounded-full mt-4 border border-white duration-300">
+                  Order Now
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

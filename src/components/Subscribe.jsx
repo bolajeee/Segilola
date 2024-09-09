@@ -3,6 +3,10 @@ import { Button } from "./common";
 const Subscribe = () => {
   return (
     <div
+      data-aos="fade-up"
+          data-aos-duration="500"
+          data-aos-delay='300'
+          
       className="about--us flex flex-col justify-items-center items-center text-center w-[66%] mx-auto pb-[90px]"
       id="about"
     >
