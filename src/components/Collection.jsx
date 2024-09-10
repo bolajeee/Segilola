@@ -72,6 +72,7 @@ const Collection = () => {
               key={data.id}
               className="rounded-xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group max-w-[300px] mt-24 mx-auto"
             >
+              {/* <Link to={slug}></Link> */}
               <div className="h-[240px] flex justify-center items-center overflow-hidden">
                 <img
                   src={data.img}
