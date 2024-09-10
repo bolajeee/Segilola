@@ -1,31 +1,9 @@
 import { FaStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { Img2, Img3 } from "../assets/images";
+import { productData } from "../ProductData"; 
 import { addToCart } from "../stores/features/cartSlice";
+import { Link } from "react-router-dom";
 
-const productData = [
-  {
-    id: 1,
-    img: Img3,
-    rating: 5.0,
-    description: "Lorem ipsum dolor sit amet haller.",
-    aosDelay: "0",
-  },
-  {
-    id: 2,
-    img: Img2,
-    rating: 5.0,
-    description: "Consectetur adipiscing elit sitt.",
-    aosDelay: "200",
-  },
-  {
-    id: 3,
-    img: Img3,
-    rating: 5.0,
-    description: "Sed do eiusmod tempor incididunt.",
-    aosDelay: "400",
-  },
-];
 
 const Collection = () => {
   const cart = useSelector((store) => store.cart.items);
@@ -72,14 +50,13 @@ const Collection = () => {
               key={data.id}
               className="rounded-xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group max-w-[300px] mt-24 mx-auto"
             >
-              {/* <Link to={slug}></Link> */}
-              <div className="h-[240px] flex justify-center items-center overflow-hidden">
+               <Link to={data.slug}> <div className="h-[240px] flex justify-center items-center overflow-hidden">
                 <img
                   src={data.img}
                   alt="img"
                   className="max-w-[240px] max-h-[240px] transform group-hover:scale-105 duration-300 drop-shadow-md"
                 />
-              </div>
+              </div></Link>
 
               <div className="p-4 text-center mt-6">
                 {/* Rating */}

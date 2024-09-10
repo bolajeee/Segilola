@@ -13,7 +13,12 @@ const Footer = () => {
       <div className="container mx-auto p-4">
         <div className="flex flex-wrap justify-between mb-8">
           {/* Logo and Copyright Section */}
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="500"
+            data-aos-delay="600"
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
+          >
             <a href="#">
               <img src={MainLogo} alt={"altLogo"} className="w-20 h-20 mb-4" />
             </a>
@@ -28,7 +33,12 @@ const Footer = () => {
           </div>
 
           {/* About Us Section */}
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="500"
+            data-aos-delay="600"
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
+          >
             <h5 className="uppercase text-white mb-4">About Us</h5>
             <ul className="list-none mb-0 text-[14px] space-y-2">
               <li>
@@ -59,7 +69,12 @@ const Footer = () => {
           </div>
 
           {/* Follow Us Section */}
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="500"
+            data-aos-delay="600"
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
+          >
             <h5 className="uppercase text-white mb-4">Follow Us</h5>
             <ul className="list-none mb-0 text-[14px] space-y-2">
               <li>
@@ -90,7 +105,12 @@ const Footer = () => {
           </div>
 
           {/* Subscribe Section */}
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="500"
+            data-aos-delay="600"
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
+          >
             <h5 className="uppercase text-white mb-4">Subscribe</h5>
             <p className="text-white mb-4 text-sm">
               Get E-mail updates about our latest shop and special offers.
