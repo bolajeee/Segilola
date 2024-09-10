@@ -10,11 +10,8 @@ import {
 } from "../components";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useSelector } from "react-redux";
 
 const Home = () => {
-  const carts = useSelector((store) => store.cart.items);
-  console.log(carts);
   React.useEffect(() => {
     AOS.init({
       offset: 100,

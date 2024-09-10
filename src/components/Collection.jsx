@@ -1,5 +1,7 @@
 import { FaStar } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
 import { Img2, Img3 } from "../assets/images";
+import { addToCart } from "../stores/features/cartSlice";
 
 const productData = [
   {
@@ -26,19 +28,30 @@ const productData = [
 ];
 
 const Collection = () => {
+  const cart = useSelector((store) => store.cart.items);
+  console.log(cart);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (id) => {
+    dispatch(
+      addToCart({
+        productId: id,
+        quantity: 1,
+      })
+    );
+  };
+
   return (
     <div className="mt-14 mb-12">
       <div className="container mx-auto">
         {/* Top Section */}
         <div
           data-aos="fade-up"
-          
           className="Top--Products flex flex-col justify-center items-center text-center w-[66%] mx-auto py-[40px]"
         >
-          <p className="text-sm text-white  ">Top Selling</p>
+          <p className="text-sm text-white">Top Selling</p>
           <h1 className="text-3xl font-bold mt-2 mb-6">Products</h1>
           <hr className="w-[70px] h-[3px] mx-auto py-[23px]" />
-
           <p className="text-[16px] text-gray-400 w-[66%]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             quidem ullam possimus hic temporibus vel provident, ducimus corrupti
@@ -86,7 +99,10 @@ const Collection = () => {
                 </p>
 
                 {/* Order Button */}
-                <button className="bg-transparent hover:bg-white hover:text-black text-white py-1 px-4 rounded-full mt-4 border border-white duration-300">
+                <button
+                  className="bg-transparent hover:bg-white hover:text-black text-white py-1 px-4 rounded-full mt-4 border border-white duration-300"
+                  onClick={() => handleAddToCart(data.id)}
+                >
                   Add to Cart
                 </button>
               </div>
