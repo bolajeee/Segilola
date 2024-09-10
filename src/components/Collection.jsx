@@ -28,7 +28,7 @@ const productData = [
 const Collection = () => {
   return (
     <div className="mt-14 mb-12">
-      <div className="container">
+      <div className="container mx-auto">
         {/* Top Section */}
         <div
           data-aos="fade-up"
