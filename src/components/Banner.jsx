@@ -16,7 +16,10 @@ const Banner = () => {
               className="max-w-[400px] h-[350px] w-full mx-auto drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center gap-6 sm:pt-0">
+          <div
+            data-aos="fade-up"
+            className="flex flex-col justify-center gap-6 sm:pt-0"
+          >
             <h1 className="text-3xl sm:text-4xl font-bold ">
               Discount upto 50% off
             </h1>

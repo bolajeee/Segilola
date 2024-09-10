@@ -70,7 +70,7 @@ const Collection = () => {
               data-aos="fade-up"
               data-aos-delay={data.aosDelay}
               key={data.id}
-              className="rounded-2xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group max-w-[300px] mt-24 mx-auto"
+              className="rounded-xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group max-w-[300px] mt-24 mx-auto"
             >
               <div className="h-[240px] flex justify-center items-center overflow-hidden">
                 <img
