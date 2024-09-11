@@ -3,16 +3,23 @@ import { FaHome, FaCartArrowDown, FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
 import { MainLogo } from "../assets/images";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const [navbarTransparent, setNavbarTransparent] = useState(true);
+  const [totalQuantity, setTotalQuantity] = useState(0)
+  const carts = useSelector(store => store.cart.items)
+  useEffect(() => {
+    let total = 0
+    carts.forEach(item => total += item.quantity)
+    setTotalQuantity(total)
+  },[carts])
 
   const navLinks = [
     { name: "Home", href: "#", id: "home" },
     { name: "About", href: "#about", id: "about" },
-    { name: "Cart", href: "../stores/features/cartSlice", id: "cart" },
     { name: "Contact", href: "#footer", id: "contact" },
   ];
 
@@ -63,10 +70,11 @@ const Navbar = () => {
             <IoLogIn />
           </a>
         </div>
-        <div className="cart--icon opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <a href="./CartPage">
+        <div className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
+          <a href="./Details">
             <FaCartArrowDown />
           </a>
+          <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">{totalQuantity}</span>
         </div>
       </div>
 
