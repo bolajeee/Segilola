@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import CartItem from "../components/CartItem";
+import CartItem from "./CartItem";
 
-const CartPage = () => {
+const CartTab = () => {
   const carts = useSelector((store) => store.cart.items);
 
   return (
@@ -9,9 +9,9 @@ const CartPage = () => {
       <h2 className="p-5 text-white text-2xl">Shopping Cart</h2>
 
       <div className="overflow-y-auto px-5">
-        {carts.map((item, key) => 
-          <CartItem key={key} data={item}  />
-        )}
+        {carts.map((item, key) => (
+          <CartItem key={key} data={item} />
+        ))}
       </div>
 
       <div className="grid grid-cols-2 gap-2 p-5">
@@ -24,4 +24,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default CartTab;

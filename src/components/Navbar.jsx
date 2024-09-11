@@ -4,18 +4,19 @@ import "../App.css";
 import { MainLogo } from "../assets/images";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const [navbarTransparent, setNavbarTransparent] = useState(true);
-  const [totalQuantity, setTotalQuantity] = useState(0)
-  const carts = useSelector(store => store.cart.items)
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const carts = useSelector((store) => store.cart.items);
   useEffect(() => {
-    let total = 0
-    carts.forEach(item => total += item.quantity)
-    setTotalQuantity(total)
-  },[carts])
+    let total = 0;
+    carts.forEach((item) => (total += item.quantity));
+    setTotalQuantity(total);
+  }, [carts]);
 
   const navLinks = [
     { name: "Home", href: "#", id: "home" },
@@ -66,15 +67,17 @@ const Navbar = () => {
           </a>
         </div>
         <div className="login--icon opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <a href="./LoginPage">
+          <a href="/login">
             <IoLogIn />
           </a>
         </div>
         <div className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <a href="./Details">
+          <Link to={"/CartTab"}>
             <FaCartArrowDown />
-          </a>
-          <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">{totalQuantity}</span>
+            <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
+              {totalQuantity}
+            </span>
+          </Link>
         </div>
       </div>
 
@@ -99,7 +102,9 @@ const Navbar = () => {
           <div
             key={link.id}
             className={`nav--${link.id} hover:scale-110 hover:text-white ${
-              activeLink === link.id ? "text-white border-b-2" : "text-[#555252] border-none"
+              activeLink === link.id
+                ? "text-white border-b-2"
+                : "text-[#555252] border-none"
             } transition-all duration-300 ease-in-out`}
             onClick={() => handleClick(link.id)}
           >

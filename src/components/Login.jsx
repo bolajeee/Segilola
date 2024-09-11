@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-    const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+  const handleLogin = () => {
+    setIsLogin(!isLogin)
+    
+  }
 
     return (
       <div className="flex min-h-screen items-center justify-center ">
@@ -69,21 +74,22 @@ const Login = () => {
               >
                 {isLogin ? "Login" : "Register"}
               </button>
-                    </div>
-                    
+            </div>
           </form>
           <div className="text-center">
-            <p className="text-sm text-gray-600">
-              {isLogin ? "Don't have an account?" : "Already have an account?"}
-              <button
-                
-                
-                onClick={() => setIsLogin(!isLogin)}
-                className="ml-1 font-medium text-black hover:text-indigo-600"
-              >
-                {isLogin ? "Register" : "Login"}
-              </button>
-            </p>
+            <Link to={"./"}>
+              <p className="text-sm text-gray-600">
+                {isLogin
+                  ? "Don't have an account?"
+                  : "Already have an account?"}
+                <button
+                  onClick={handleLogin}
+                  className="ml-1 font-medium text-black hover:text-indigo-600"
+                >
+                  {isLogin ? "Register" : "Login"}
+                </button>
+              </p>
+            </Link>
           </div>
         </div>
       </div>

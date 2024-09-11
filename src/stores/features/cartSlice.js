@@ -24,12 +24,12 @@ const cartSlice = createSlice({
       if (quantity > 0) {
         state.items[indexProductId].quantity = quantity
       } else {
-        
+        delete state.items[indexProductId];
       }
-    }delete state.items[indexProductId]
+    }
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, changeQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;
