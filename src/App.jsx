@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:slug" element={<Details />} />
-          <Route path="/CartTab" component={CartTab} />
+          <Route path="/CartTab" element={<CartTab />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>

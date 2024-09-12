@@ -3,20 +3,28 @@ import { FaHome, FaCartArrowDown, FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
 import { MainLogo } from "../assets/images";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleStatusTab } from "../stores/features/cartSlice";
+import { Link } from "react-router-dom"; // Correct import for Link
+import CartTab from "./CartTab";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const [navbarTransparent, setNavbarTransparent] = useState(true);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const dispatch = useDispatch();
   const carts = useSelector((store) => store.cart.items);
+
   useEffect(() => {
     let total = 0;
     carts.forEach((item) => (total += item.quantity));
     setTotalQuantity(total);
   }, [carts]);
+
+  const handleOpenTabCart = () => {
+    dispatch(toggleStatusTab());
+  };
 
   const navLinks = [
     { name: "Home", href: "#", id: "home" },
@@ -34,11 +42,7 @@ const Navbar = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setNavbarTransparent(false);
-    } else {
-      setNavbarTransparent(true);
-    }
+    setNavbarTransparent(window.scrollY <= 50);
   };
 
   useEffect(() => {
@@ -62,17 +66,20 @@ const Navbar = () => {
       {/* Icons Section */}
       <div className="header-icons flex gap-3 text-xl order-1 md:order-2">
         <div className="home--icon opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <a href="/">
+          <Link to="/">
             <FaHome />
-          </a>
+          </Link>
         </div>
         <div className="login--icon opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <a href="/login">
+          <Link to="/login">
             <IoLogIn />
-          </a>
+          </Link>
         </div>
-        <div className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <Link to={"/CartTab"}>
+        <div
+          className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110"
+          onClick={handleOpenTabCart}
+        >
+          <Link to="/cartTab">
             <FaCartArrowDown />
             <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
               {totalQuantity}
