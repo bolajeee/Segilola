@@ -7,9 +7,11 @@ import {
   Subscribe,
   Footer,
   Banner,
+  CartTab,
 } from "../components";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useDisclosure } from "@chakra-ui/react";
 
 const Home = () => {
   React.useEffect(() => {
@@ -21,6 +23,7 @@ const Home = () => {
     });
     AOS.refresh();
   }, []);
+  const { isOpen, onOpen } = useDisclosure();
 
   return (
     <div className="header">
@@ -31,6 +34,7 @@ const Home = () => {
       <Banner />
       <Subscribe />
       <Footer />
+      <CartTab isOpen={isOpen} onOpen={onOpen} />
     </div>
   );
 };

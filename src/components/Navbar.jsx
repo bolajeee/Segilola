@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleStatusTab } from "../stores/features/cartSlice";
 import { Link } from "react-router-dom"; // Correct import for Link
+import { useDisclosure } from "@chakra-ui/react";
 import CartTab from "./CartTab";
 
 const Navbar = () => {
@@ -15,6 +16,7 @@ const Navbar = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const dispatch = useDispatch();
   const carts = useSelector((store) => store.cart.items);
+  const { onOpen } = useDisclosure();
 
   useEffect(() => {
     let total = 0;
@@ -75,16 +77,19 @@ const Navbar = () => {
             <IoLogIn />
           </Link>
         </div>
+
         <div
           className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110"
-          onClick={handleOpenTabCart}
+          onClick={() => {
+            handleOpenTabCart();
+            onOpen();
+          }}
         >
-          <Link to="/cartTab">
-            <FaCartArrowDown />
-            <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
-              {totalQuantity}
-            </span>
-          </Link>
+          <FaCartArrowDown />
+          <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
+            {totalQuantity}
+          </span>
+          <CartTab isOpen={isOpen} onOpen={onOpen} />
         </div>
       </div>
 
