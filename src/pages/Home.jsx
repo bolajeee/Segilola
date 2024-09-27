@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Navbar,
+  
   Hero,
   About,
   Collection,
@@ -27,7 +27,6 @@ const Home = () => {
 
   return (
     <div className="header">
-      <Navbar />
       <Hero />
       <About />
       <Collection />
