@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-// import { toggleStatusTab } from "../stores/features/cartSlice";
 import {
   Drawer,
   DrawerBody,
@@ -15,7 +14,7 @@ import {
   DrawerFooter,
 } from "@chakra-ui/react";
 
-const CartTab = ({ isOpen, onOpen }) => {
+const CartTab = ({ isOpen, onClose }) => {
   const carts = useSelector((store) => store.cart.items);
 
   return (
@@ -29,14 +28,13 @@ const CartTab = ({ isOpen, onOpen }) => {
           ))}
         </DrawerBody>
       </div>
-      <Drawer>
+      <Drawer isOpen={isOpen} onClose={onClose}>
         <DrawerContent>
           <DrawerFooter className="grid grid-cols-2 gap-2 p-5">
             <button
               className="bg-black text-white py-2 rounded-md"
               onClick={() => {
-                handleCloseTab(key);
-                onOpen();
+                onClose(); // Close the drawer when clicking the Close button
               }}
             >
               Close
@@ -51,11 +49,9 @@ const CartTab = ({ isOpen, onOpen }) => {
   );
 };
 
-  CartTab.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    onOpen: PropTypes.func.isRequired,
-  };
-
-
+CartTab.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired, // onClose instead of onOpen
+};
 
 export default CartTab;
