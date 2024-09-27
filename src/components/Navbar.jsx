@@ -3,30 +3,20 @@ import { FaHome, FaCartArrowDown, FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
 import { MainLogo } from "../assets/images";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleStatusTab } from "../stores/features/cartSlice";
-import { Link } from "react-router-dom"; // Correct import for Link
-import { useDisclosure } from "@chakra-ui/react";
-import CartTab from "./CartTab";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const [navbarTransparent, setNavbarTransparent] = useState(true);
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const dispatch = useDispatch();
   const carts = useSelector((store) => store.cart.items);
-  const { onOpen } = useDisclosure();
-
   useEffect(() => {
     let total = 0;
     carts.forEach((item) => (total += item.quantity));
     setTotalQuantity(total);
   }, [carts]);
-
-  const handleOpenTabCart = () => {
-    dispatch(toggleStatusTab());
-  };
 
   const navLinks = [
     { name: "Home", href: "#", id: "home" },
@@ -44,7 +34,11 @@ const Navbar = () => {
   };
 
   const handleScroll = () => {
-    setNavbarTransparent(window.scrollY <= 50);
+    if (window.scrollY > 50) {
+      setNavbarTransparent(false);
+    } else {
+      setNavbarTransparent(true);
+    }
   };
 
   useEffect(() => {
@@ -68,28 +62,22 @@ const Navbar = () => {
       {/* Icons Section */}
       <div className="header-icons flex gap-3 text-xl order-1 md:order-2">
         <div className="home--icon opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <Link to="/">
+          <a href="/">
             <FaHome />
-          </Link>
+          </a>
         </div>
         <div className="login--icon opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <Link to="/login">
+          <a href="/login">
             <IoLogIn />
-          </Link>
+          </a>
         </div>
-
-        <div
-          className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110"
-          onClick={() => {
-            handleOpenTabCart();
-            onOpen();
-          }}
-        >
-          <FaCartArrowDown />
-          <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
-            {totalQuantity}
-          </span>
-          <CartTab isOpen={isOpen} onOpen={onOpen} />
+        <div className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
+          <Link to={"/CartTab"}>
+            <FaCartArrowDown />
+            <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
+              {totalQuantity}
+            </span>
+          </Link>
         </div>
       </div>
 
