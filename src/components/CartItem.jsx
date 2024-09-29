@@ -37,7 +37,6 @@ const CartItem = (props) => {
 
   return (
     <div className="flex justify-between items-center bg-slate-600 text-white p-2 border-b-2 border-slate-700 gap-5 rounded-md">
-      {/* Fallback for missing image or name */}
       <img
         src={detail?.image || "placeholder.jpg"}
         alt={detail?.name || "Product"}
