@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import { IoLogIn } from "react-icons/io5";
 import { FaHome, FaCartArrowDown, FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
 import { MainLogo } from "../assets/images";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
-const Navbar = () => {
+
+const Navbar = ({onOpen}) => {
   const [activeLink, setActiveLink] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const [navbarTransparent, setNavbarTransparent] = useState(true);
@@ -71,13 +72,16 @@ const Navbar = () => {
             <IoLogIn />
           </a>
         </div>
-        <div className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110">
-          <Link to={"/CartTab"}>
+
+        <div className="cart--icon relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-110"
+        onClick={onOpen}
+        >
+          
             <FaCartArrowDown />
             <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full justify-center items-center text-center">
               {totalQuantity}
             </span>
-          </Link>
+         
         </div>
       </div>
 

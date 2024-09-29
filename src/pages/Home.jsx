@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import {
   
@@ -11,9 +12,9 @@ import {
 } from "../components";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useDisclosure } from "@chakra-ui/react";
 
-const Home = () => {
+
+const Home = ({isOpen , onClose}) => {
   React.useEffect(() => {
     AOS.init({
       offset: 100,
@@ -23,7 +24,7 @@ const Home = () => {
     });
     AOS.refresh();
   }, []);
-  const { isOpen, onOpen } = useDisclosure();
+
 
   return (
     <div className="header">
@@ -33,7 +34,7 @@ const Home = () => {
       <Banner />
       <Subscribe />
       <Footer />
-      <CartTab isOpen={isOpen} onOpen={onOpen} />
+      <CartTab isOpen={isOpen} onClose={onClose} />
     </div>
   );
 };

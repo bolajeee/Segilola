@@ -11,6 +11,7 @@ const CartItem = (props) => {
 
   useEffect(() => {
     const findDetail = productData.find((product) => product.id === productId);
+    console.log("Product Detail:", findDetail); // Debugging log
     setDetail(findDetail || {});
   }, [productId]);
 
@@ -36,9 +37,14 @@ const CartItem = (props) => {
 
   return (
     <div className="flex justify-between items-center bg-slate-600 text-white p-2 border-b-2 border-slate-700 gap-5 rounded-md">
-      <img src={detail.image} alt={detail.name} className="w-12" />
-      <h3>{detail.name}</h3>
-      <p>{detail.price * quantity}</p>
+      {/* Fallback for missing image or name */}
+      <img
+        src={detail?.image || "placeholder.jpg"}
+        alt={detail?.name || "Product"}
+        className="w-12"
+      />
+      <h3>{detail?.name || "Unnamed Product"}</h3>
+      <p>{(detail.price || 0) * quantity}</p>
       <div className="w-20 flex justify-between">
         <button
           className="bg-gray-200 rounded-full w-6 h-6 text-cyan-600"
@@ -46,7 +52,7 @@ const CartItem = (props) => {
         >
           -
         </button>
-        <span>{quantity}</span>
+        <span className="px-2">{quantity}</span>
         <button
           className="bg-gray-200 rounded-full w-6 h-6 text-cyan-600"
           onClick={handlePlusQuantity}
@@ -57,7 +63,6 @@ const CartItem = (props) => {
     </div>
   );
 };
-
 
 CartItem.propTypes = {
   data: PropTypes.shape({
