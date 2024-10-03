@@ -1,4 +1,3 @@
-import { FaStar } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { productData } from "../ProductData"; 
 import { addToCart } from "../stores/features/cartSlice";
@@ -59,12 +58,7 @@ const Collection = () => {
               </div></Link>
 
               <div className="p-4 text-center mt-6">
-                {/* Rating */}
-                <div className="w-full flex justify-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400" />
-                  ))}
-                </div>
+            
 
                 {/* Title */}
                 <h1 className="text-xl font-bold mb-2">
