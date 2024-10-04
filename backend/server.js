@@ -1,33 +1,18 @@
 /* eslint-disable no-unused-vars */
-import express from 'express'
-import dotenv from 'dotenv'
-import { connectDb } from './config/db.js'
-import Product from './models/products.model.js'
+import express from "express";
+import dotenv from "dotenv";
+import { connectDb } from "./config/db.js";
+import productRoutes from "./routes/product.route.js"
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.post("/api/products", async (req, res) => {
-    const product = req.body
+app.use("/api/products", productRoutes)
 
-    if (!product.name || !product.price || !product.image || !product.description) {
-        return  res.status(400).json({success: false, message: "Please fill all fields"})
-    }
-
-    const newProduct = new Product(product)
-
-    try {
-        await newProduct.save()
-        res.status(201).json({ success: true, data: newProduct , message : 'Product created successfully'})
-    } catch (error) {
-        res.status(500).json({success:false, message: 'Internal server error'})
-    }
-})
-
-app.listen('5000', () => {
-    connectDb()
-    console.log("hello world")
-})
+app.listen("5000", () => {
+  connectDb();
+  console.log("hello world");
+});
