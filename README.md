@@ -1,2 +1,0 @@
-# segilola
- fashion website

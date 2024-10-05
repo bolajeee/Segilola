@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { IoLogIn } from "react-icons/io5";
 import { FaHome, FaCartArrowDown, FaBars, FaTimes } from "react-icons/fa";
-import "../App.css";
+// import "../App.css";
 import { MainLogo } from "../assets/images";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";

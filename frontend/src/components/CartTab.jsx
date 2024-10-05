@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-// In CartTab component
+
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import PropTypes from "prop-types";
-// import { useDispatch } from "react-redux";
+
 import {
   Drawer,
   DrawerBody,
