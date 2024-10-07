@@ -16,6 +16,7 @@ import {
 
 const CartTab = ({ isOpen, onClose }) => {
   const carts = useSelector((store) => store.cart.items);
+  console.log(carts, "carts")
 
   return (
     <>

@@ -10,16 +10,16 @@ const CartItem = (props) => {
   const { fetchProducts, products } = useProductStore();
 
   // Fetch products on component mount
-useEffect(() => {
-  fetchProducts();
-}, [fetchProducts]);
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
-useEffect(() => {
-  console.log("Fetched products:", products);
-  console.log("Current productId in CartItem:", productId);
-}, [products, productId]);
+  useEffect(() => {
+    console.log("Fetched products:", products);
+    console.log("Current productId in CartItem:", productId);
+  }, [products, productId]);
 
-  const detail = products.find((product) => product.id === productId);
+  const detail = products.find((product) => product._id === productId);
 
   console.log("Product Detail in CartItem:", detail);
 
@@ -48,18 +48,16 @@ useEffect(() => {
     );
   };
 
-  {
-    products.map((product) => {
-    
+ 
   return (
-    <div className="flex justify-between items-center bg-slate-600 text-white p-2 border-b-2 border-slate-700 gap-5 rounded-md" key={product.id}>
+    <div className="flex justify-between items-center bg-slate-600 text-white p-2 border-b-2 border-slate-700 gap-5 rounded-md" >
       <img
-        src={product.image || "placeholder.jpg"}
-        alt={product.name || "Product"}
+        src={detail?.image || "placeholder.jpg"}
+        alt={detail?.name || "Product"}
         className="w-12"
       />
-      <h3>{product.name || "Unnamed Product"}</h3>
-      <p>{(product.price || 0) * quantity}</p>
+      <h3>{detail?.name || "Unnamed Product"}</h3>
+      <p>{(detail?.price || 0) * quantity}</p>
       <div className="w-20 flex justify-between">
         <button
           className="bg-gray-200 rounded-full w-6 h-6 text-cyan-600"
@@ -77,9 +75,9 @@ useEffect(() => {
       </div>
     </div>
   );
-  })}
+}
 
-};
+
 
 CartItem.propTypes = {
   data: PropTypes.shape({
