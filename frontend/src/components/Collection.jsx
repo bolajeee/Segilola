@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Collection = () => {
   const cart = useSelector((store) => store.cart.items);
-  console.log(cart);
+  
   const dispatch = useDispatch();
 
   const handleAddToCart = (id) => {

@@ -9,24 +9,32 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const { productId, quantity } = action.payload
-      const indexProductId = (state.items).findIndex(item => item.productId === productId)
+      const { productId, quantity } = action.payload;
+      const indexProductId = state.items.findIndex(
+        (item) => item.productId === productId
+      );
       if (indexProductId >= 0) {
-        state.items[indexProductId].quantity += quantity
+        state.items[indexProductId].quantity += quantity;
       } else {
-      state.items.push({ productId, quantity });
-        
+        state.items.push({ productId, quantity });
       }
     },
     changeQuantity(state, action) {
-      const { productId, quantity } = action.payload
-      const indexProductId = (state.items).findIndex(item => item.productId === productId)
-      if (quantity > 0) {
-        state.items[indexProductId].quantity = quantity
-      } else {
-        delete state.items[indexProductId];
-      }
-    }
+      const { productId, quantity } = action.payload;
+      const indexProductId = state.items.findIndex(
+        (item) => item.productId === productId
+      );
+
+     if (indexProductId >= 0) {
+       if (quantity > 0) {
+         state.items[indexProductId].quantity = quantity;
+       } else {
+         state.items.splice(indexProductId, 1); // Remove the item if quantity is zero
+       }
+     }
+      // Debugging
+      console.log("Updated cart items:", state.items);
+    },
   },
 });
 
