@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 
 const Collection = () => {
-  const cart = useSelector((store) => store.cart.items);
+  // const cart = useSelector((store) => store.cart.items);
   const { fetchProducts, products } = useProductStore();
 
   useEffect(() => {
