@@ -4,7 +4,7 @@ const About = () => {
       data-aos="zoom-in"
       data-aos-duration="500"
       data-aos-delay="400"
-      className="about--us flex flex-col justify-center items-center text-center w-[66%] mx-auto py-[90px]"
+      className="about--us flex flex-col justify-center items-center text-center w-[66%] mx-auto py-[90px] mt-12"
       id="about"
     >
       <h3 className="font-[500] text-[16px] tracking-normal">Who we are</h3>
