@@ -4,6 +4,7 @@ import { addToCart } from "../stores/features/cartSlice";
 import { Link } from "react-router-dom";
 import { useProductStore } from "../stores/product";
 import { useEffect } from "react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 
 const Collection = () => {
@@ -45,50 +46,53 @@ const Collection = () => {
           </p>
         </div>
 
-        {/* Products Section */}
-        <div
-          data-aos="zoom-in"
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center"
-        >
-          {products.map((data) => (
-            <div
-              data-aos="fade-up"
-              data-aos-delay={data.aosDelay}
-              key={data._id}
-              className="rounded-xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group max-w-[300px] mt-24 mx-auto"
-            >
-               <Link to={data.slug}> <div className="h-[240px] flex justify-center items-center overflow-hidden">
-                <img
-                  src={data.image}
-                  alt="img"
-                  className="max-w-[240px] max-h-[240px] transform group-hover:scale-105 duration-300 drop-shadow-md"
-                />
-              </div></Link>
+        <SimpleGrid columns={3} spacing={'50px'} >
+          {/* Products Section */}
+          <div
+            data-aos="zoom-in"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center"
+          >
+            {products.map((data) => (
+              <div
+                data-aos="fade-up"
+                data-aos-delay={data.aosDelay}
+                key={data._id}
+                className="rounded-xl bg-white dark:bg-gray-800 hover:text-white relative shadow-lg group min-w-[200px] mt-24 mx-auto "
+              >
+                <Link to={data.slug}>
+                  {" "}
+                  <div className="h-[200px] flex justify-center items-center">
+                    <img
+                      src={data.image}
+                      alt="img"
+                      className="w-[240px] h-[200px] overflow-hidden transform group-hover:scale-105 duration-300 drop-shadow-md"
+                    />
+                  </div>
+                </Link>
 
-              <div className="p-4 text-center mt-6">
-            
+                <div className="p-4 text-center mt-6">
+                  {/* Title */}
+                  <h1 className="text-xl font-bold mb-2">
+                    {data.name || "Product Title"}
+                  </h1>
 
-                {/* Title */}
-                <h1 className="text-xl font-bold mb-2">
-                  {data.name || "Product Title"}
-                </h1>
+                  {/* Description */}
+                  <p className="text-gray-500 group-hover:text-white max-w-[200px] duration-300 text-sm line-clamp-2">
+                    {data.description}
+                  </p>
 
-                {/* Description */}
-                <p className="text-gray-500 group-hover:text-white max-w-[200px] duration-300 text-sm line-clamp-2">
-                  {data.description}
-                </p>
-
-                {/* Order Button */}
-                <button
-                  className="bg-transparent hover:bg-white hover:text-black text-white py-1 px-4 rounded-full mt-4 border border-white duration-300"
-                  onClick={() => handleAddToCart(data._id)}
-                >
-                  Add to Cart
-                </button>
+                  {/* Order Button */}
+                  <button
+                    className="bg-transparent hover:bg-white hover:text-black text-white py-1 px-4 rounded-full mt-4 border border-white duration-300"
+                    onClick={() => handleAddToCart(data._id)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </SimpleGrid>
       </div>
     </div>
   );
