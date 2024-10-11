@@ -4,7 +4,7 @@ import User from "../models/users.model.js";
 export const createNewUser = async (req, res) => {
   const user = req.body;
 
-  if (!user.name || !user.email) {
+  if (!user.name || !user.email || !user.password) {
     return res
       .status(400)
       .json({ success: false, message: "Please fill all fields" });
