@@ -4,13 +4,13 @@ export const useUserStore = create((set) => ({
   users: [],
   setUsers: (users) => set({ users }),
 
-  createProduct: async (newUser) => {
-    if (!newUser.name || !newUser.email) {
+  createUser: async (newUser) => {
+    if (!newUser.name || !newUser.email || !newUser.password) {
       return { success: false, message: "please fill in all required fields" };
     }
 
     try {
-      const res = await fetch("/api/users", {
+      const res = await fetch("http://localhost:5000/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
