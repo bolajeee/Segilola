@@ -15,6 +15,7 @@
     "ejs": "^3.1.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "segilola": "file:..",
     "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
